@@ -1,0 +1,8 @@
+{
+    "aprendices": [
+      { "id": "1", "nombre": "Lucho", "apellido": 100, "mstricula":true,"email":"Holalooser@gmail.com" },
+      { "id": "2", "nombre": "Pepe", "apellido": 100, "mstricula":true,"email":"Holalooser@gmail.com"},
+      { "id": "3", "nombre": "Ludovico", "apellido": 100, "mstricula":true,"email":"Holalooser@gmail.com"},
+      { "id": "4", "nombre": "Juanito", "apellido": 100, "mstricula":true,"email":"Holalooser@gmail.com"}
+    ]
+  }
