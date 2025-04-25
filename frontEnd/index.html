@@ -3,10 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/estilo.css">
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="row d-flex align-items-center d-flex justify-content-center" id="row" >
+            <div class="col-6 aling-items-center">
+                <form action="" id="formularioCrud">
+                    <div class="mb-3">
+                        <label for="id" class="form-label">Id</label>
+                        <input type="number" class="form-control" id="id" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="matricula class="form-label">Matrícula :</label>
+                        <select name="matricula" id="matricula" required>
+                            <option value="false">No inscrito</option>
+                            <option value="true">Inscrito</option>
+                            <option value="false" selected>Seleccione el estado</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="text" class="form-control" id="correo" required>
+                    </div>
+                    <div class="row" >
+                        <div class="col-2  ">
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary" id="btnEnviar">Enviar</button>
+                            </div>
+                        </div>
+                        <div class="col-10 d-flex justify-content-start ">
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-danger" id="btnCancelar">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!--****************************************************************Inicio tabla de visualización de empledos-->
+        <div class="row d-flex aling-items-center d-flex justify-content-center m-3">
+            <div class="col-12 d-flex justify-content-center">
+                <h2>Registro De Estudiantes</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Matrícula</th>
+                            <th>Correo</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaEstudiantes">
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="./assets/js/app.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
 </html>
