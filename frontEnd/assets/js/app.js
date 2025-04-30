@@ -12,15 +12,15 @@ function leerApi()
                 //Creación de los botones editar y eliminar para cada fila(estudiante)
                 let btnEditar=document.createElement('button');
                 btnEditar.style.background="#ffc107";
-                btnEditar.setAttribute("id",`${estudiantes.id}`);
-                btnEditar.setAttribute('class',"btn");
+                btnEditar.setAttribute("data-id",`${estudiantes.id}`);
+                btnEditar.setAttribute('class',"btn btnEditar");
                 btnEditar.appendChild(document.createTextNode("Editar"));
 
                 let btnEliminar=document.createElement('button');
                 btnEliminar.style.background="#dc3545";
                 btnEliminar.style.color="white";
-                btnEliminar.setAttribute("id",`${estudiantes.id}`);
-                btnEliminar.setAttribute('class',"btn");
+                btnEliminar.setAttribute("data-id",`${estudiantes.id}`);
+                btnEliminar.setAttribute('class',"btn btnEliminar");
                 btnEliminar.appendChild(document.createTextNode("Eliminar"));
 
 
@@ -144,5 +144,15 @@ function cancelar()
     document.querySelector('#apellido').value="";
     document.querySelector('#matricula').value="";
     document.querySelector('#correo').value="";
+
+}
+
+let modalEditar=document.querySelector('#modalEditar');
+let btnEditar=document.querySelector('.btnEditar');
+btnEditar.addEventListener('click',editar)
+function editar()
+{
+    modalEditar.style.display = "none";
+    let idEstudiante=btnEditar.getAttribute('data-id');
 
 }
