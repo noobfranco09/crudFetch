@@ -13,7 +13,11 @@ function leerApi()
                 let btnEditar=document.createElement('button');
                 btnEditar.style.background="#ffc107";
                 btnEditar.setAttribute("data-id",`${estudiantes.id}`);
-                btnEditar.setAttribute('class',"btn btnEditar");
+                btnEditar.setAttribute("data-nombre",`${estudiantes.nombre}`);
+                btnEditar.setAttribute("data-apellido",`${estudiantes.apellido}`);
+                btnEditar.setAttribute("data-matricula",`${estudiantes.matricula}`);
+                btnEditar.setAttribute("data-correo",`${estudiantes.correo}`);
+                btnEditar.setAttribute('class',"btn");
                 btnEditar.appendChild(document.createTextNode("Editar"));
 
                 let btnEliminar=document.createElement('button');
@@ -63,12 +67,16 @@ function leerApi()
                 rowTable.appendChild(btnEliminar);
 
                 tabla.appendChild(rowTable);
-
-
+                
+                btnEditar.addEventListener('click',editar)
+                /*(btnEditar.dataset.id,
+                    btnEditar.dataset.nombre,btnEditar.dataset.apellido,
+                    btnEditar.dataset.matricula,btnEditar.dataset.correo)*/
             });
 
         })
 }
+
 let formulario=document.querySelector('#formularioCrud');
 
 formulario.addEventListener('submit',agregarEstudiante)
@@ -102,7 +110,7 @@ function agregarEstudiante(e)
                     {
                         id:`${id}`,
                         nombre:`${nombre}`,
-                        pellido:`${apellido}`,
+                        apellido:`${apellido}`,
                         matricula:`${matricula}`,
                         email:`${correo}`,
                     };
@@ -147,12 +155,14 @@ function cancelar()
 
 }
 
-let modalEditar=document.querySelector('#modalEditar');
-let btnEditar=document.querySelector('.btnEditar');
-btnEditar.addEventListener('click',editar)
-function editar()
-{
-    modalEditar.style.display = "none";
-    let idEstudiante=btnEditar.getAttribute('data-id');
+const options = {
+    keyboard: false,
+    backdrop: 'static'
+  };
 
-}
+const modalEditar = new bootstrap.Modal(document.querySelector('#modalEditar'),options)
+ function editar()
+{
+    modalEditar.show();
+
+} 

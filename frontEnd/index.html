@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="row d-flex align-items-center d-flex justify-content-center" id="row" >
-            <div class="col-6 aling-items-center">
+            <div class="col-6 align-items-center">
                 <form action="" id="formularioCrud">
                     <div class="mb-3">
                         <label for="id" class="form-label">Id</label>
@@ -21,11 +21,11 @@
                         <input type="text" class="form-control" id="nombre" required>
                     </div>
                     <div class="mb-3">
-                        <label for="apellido class="form-label">Apellido</label>
+                        <label for="apellido" class="form-label">Apellido</label>
                         <input type="text" class="form-control" id="apellido" required>
                     </div>
                     <div class="mb-3">
-                        <label for="matricula class="form-label">Matrícula :</label>
+                        <label for="matricula" class="form-label">Matrícula :</label>
                         <select class="form-select" name="matricula" id="matricula" required>
                             <option value="false">No inscrito</option>
                             <option value="true">Inscrito</option>
@@ -42,7 +42,7 @@
                                 <button type="submit" class="btn btn-primary" id="btnEnviar">Enviar</button>
                             </div>
                         </div>
-                        <div class="col-10 d-flex justify-content-start ">
+                        <div class="col-10 d-flex justify-content-center ">
                             <div class="mb-3">
                                 <button type="button" class="btn btn-danger" id="btnCancelar">Cancelar</button>
                             </div>
@@ -79,7 +79,67 @@
             </div>
         </div>
     </div>
+
+        <!-- ////////////////////////////////////////////////////////////////////Inicio de la modal/////////////////////////////////////////////////////////////////////-->
+                <div class="modal" tabindex="-1" id="modalEditar">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Editar Estudiante</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                                    <form action="" id="formularioEditar">
+                                        <div class="mb-3">
+                                            <label for="editarId" class="form-label">Id</label>
+                                            <input type="number" class="form-control" id="editarId" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="editarNombre" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="editarNombre" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="editarApellido" class="form-label">Apellido</label>
+                                            <input type="text" class="form-control" id="editarApellido" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="editarMatricula" class="form-label">Matrícula :</label>
+                                            <select class="form-select" name="editarMatricula" id="editarMatricula" required>
+                                                <option value="false">No inscrito</option>
+                                                <option value="true">Inscrito</option>
+                                                <option value="false" selected>Seleccione el estado</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="editarCorreo" class="form-label">Correo</label>
+                                            <input type="text" class="form-control" id="editarCorreo" required>
+                                        </div>
+                                        <div class="row" >
+                                            <div class="col-6  ">
+                                                <div class="mb-3">
+                                                    <button type="submit" class="btn btn-primary" id="btnEnviar2">Enviar</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 ">
+                                                <div class="mb-3">
+                                                    <button type="button" class="btn btn-danger" id="btnCancelar2" data-bs-dismiss="modal">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                    
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+          <!-- ////////////////////////////////////////////////////////////////////Fin de la modal/////////////////////////////////////////////////////////////////////-->
+ 
+
+
+
+<!-- <script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/js/app.js"></script> -->
 </body>
-<script src="./assets/js/app.js"></script>
-<script src="./assets/js/bootstrap.min.js"></script>
 </html>
