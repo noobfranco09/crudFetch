@@ -16,7 +16,7 @@ function leerApi()
                 btnEditar.setAttribute("data-nombre",`${estudiantes.nombre}`);
                 btnEditar.setAttribute("data-apellido",`${estudiantes.apellido}`);
                 btnEditar.setAttribute("data-matricula",`${estudiantes.matricula}`);
-                btnEditar.setAttribute("data-correo",`${estudiantes.correo}`);
+                btnEditar.setAttribute("data-correo",`${estudiantes.email}`);
                 btnEditar.setAttribute('class',"btn");
                 btnEditar.appendChild(document.createTextNode("Editar"));
 
@@ -40,7 +40,7 @@ function leerApi()
                 let nombreEstudiante=document.createTextNode(estudiantes.nombre);
                 let apellidoEstudiante=document.createTextNode(estudiantes.apellido);
                 let matricula;
-                if(estudiantes.matricula===true)
+                if(estudiantes.matricula==="true")
                     {
                          matricula=document.createTextNode("Activa");
                     }
@@ -68,10 +68,12 @@ function leerApi()
 
                 tabla.appendChild(rowTable);
                 
-                btnEditar.addEventListener('click',editar)
-                /*(btnEditar.dataset.id,
+                btnEditar.addEventListener('click',()=>formularioEdicionEstudiante(btnEditar.dataset.id,
                     btnEditar.dataset.nombre,btnEditar.dataset.apellido,
-                    btnEditar.dataset.matricula,btnEditar.dataset.correo)*/
+                    btnEditar.dataset.matricula,btnEditar.dataset.correo));
+
+                btnEliminar.addEventListener('click',()=>eliminarEstudiante(btnEliminar.dataset.id))
+                
             });
 
         })
@@ -161,8 +163,66 @@ const options = {
   };
 
 const modalEditar = new bootstrap.Modal(document.querySelector('#modalEditar'),options)
- function editar()
+ function formularioEdicionEstudiante(id,nombre,apellido,matricula,correo)
 {
     modalEditar.show();
+    document.querySelector('#editarId').value=id;
+    document.querySelector('#editarNombre').value=nombre;
+    document.querySelector('#editarApellido').value=apellido;
+    document.querySelector('#editarMatricula').value=matricula;
+    document.querySelector('#editarCorreo').value=correo;
 
+    document.querySelector('#formularioEditar').addEventListener('submit',(e)=>{
+        e.preventDefault();
+        enviarEdicion(id);
+        
+    })
 } 
+
+function enviarEdicion(id)
+{
+    let idActualizado=document.querySelector('#editarId').value;
+    let nombreActualizado=document.querySelector('#editarNombre').value;
+    let apellidoActualizado=document.querySelector('#editarApellido').value;
+    let matriculaActualizada=document.querySelector('#editarMatricula').value;
+    let correoActualizado=document.querySelector('#editarCorreo').value;
+    let estudianteActualizado={
+        id: `${idActualizado}`,
+        nombre: `${nombreActualizado}`,
+        apellido: `${apellidoActualizado}`,
+        matricula: `${matriculaActualizada}`,
+        email: `${correoActualizado}`
+    }
+    fetch(urlApi + `${id}`,{
+        method: 'PUT',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(estudianteActualizado)
+    })
+    .then(res=>res.json())
+    .then(res=>{
+        alert("Actualizado con éxito")
+        modalEditar.hide();
+        window.location.reload()
+    })
+    
+}
+
+let btnCancelar2=document.querySelector('#btnCancelar2');
+
+function eliminarEstudiante(id)
+{
+    fetch(urlApi + `${id}`,{
+        method: 'DELETE',
+    })
+    .then(res=>{
+        if(!res.ok){
+            alert("No se pudo eliminar");
+        }
+        else
+        {
+            alert("Eliminado con éxito");
+            window.location.reload();
+        }
+    })
+    
+}
